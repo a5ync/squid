@@ -60,7 +60,7 @@ gcloud compute instances create $vm_name \
     http_access allow authenticated
     http_port 3128
     EOF
-    echo \"$username:$(openssl passwd -apr1 $password)\" > /etc/squid/passwd
+    echo \"$username:$(openssl passwd -apr1 $password)\" | sudo tee /etc/squid/passwd > /dev/null
     sudo systemctl restart squid
     "
 
